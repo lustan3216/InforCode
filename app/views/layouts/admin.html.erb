@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InforchargeWeixin</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'admin/application', media: 'all' %>
+  <%= javascript_include_tag 'admin/application'  %>
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+<div class="page-wrapper">
+  <%= render 'admin/shared/navbar' %>
+
+  <div class="clearfix"> </div>
+  <div class="page-container">
+
+    <%= render 'admin/shared/sidebar' %>
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <%= render 'admin/shared/flash' %>
+        <%= yield %>
+        <%= javascript_pack_tag "#{ request.params['controller'] }/#{ action_name }" rescue '' %>
+        <%= stylesheet_pack_tag "#{ request.params['controller'] }/#{ action_name }" rescue '' %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

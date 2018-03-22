@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'client/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:client , @ad] do |f| %>
+            <div class="form-body">
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :name, class: 'form-control' %>
+                <%= f.label :name, 'Name (If change then Daily Ad Reports will separate to a new report.)' %>
+              </div>
+
+              <div class="row">
+                <div class="form-group form-md-line-input col-xs-9">
+                  <%= f.collection_select :material_ids,
+                                          current_user.client.materials.order('id asc'),
+                                          :id , :id_with_name_and_size, {}, class: 'form-control' %>
+
+                  <%= f.label :material_ids, '* Material', style: 'left: 15px' %>
+                </div>
+                <div class="col-xs-3">
+                  <%= link_to 'Create Material', new_client_material_path,
+                              class: 'btn btn-default btn-block', style:'margin-top: 20px;', remote: true %>
+                </div>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :manager_id,
+                                        current_user.client.managers.all.order('id asc'),
+                                        :id , :id_with_name, { include_blank: "Auto set by material's manager" },
+                                        class: 'form-control', disabled:'' %>
+
+                <%= f.label :manager_id, "Manager (Auto set by material's manager)" %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.check_box :is_default, class: 'form-control' %>
+                <%= f.label :is_default, 'Default (Manager will be cleaned if ad setup for default)' %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :start_at, class: 'form-control' %>
+                <%= f.label :start_at %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :end_at, class: 'form-control' %>
+                <%= f.label :end_at %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :daily_budget, class: 'form-control', step: '0.1' %>
+                <%= f.label :daily_budget, 'Daily Budget (Default is zero, and it meanings no budget limit)' %>
+              </div>
+
+              <!--<div class="form-group form-md-line-input">-->
+              <%#= f.number_field :discount, class: 'form-control', step: '0.1' %>
+              <%#= f.label :discount %>
+              <!--</div>-->
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="material_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="padding:0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="z-index: 19;position: absolute;right: 15px;top: 15px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div id="new_material"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#ad_start_at, #ad_end_at').daterangepicker({
+      timePicker: true,
+      singleDatePicker: true,
+      locale: {
+        format: 'YYYY-MM-DD h:mm A'
+      }
+    });
+
+    function checkManager(){
+      if ($("[id$='is_default']").prop('checked')){
+        $("[id$='manager_id']").val('')
+      }
+    }
+
+    function checkDafult(){
+      if ($("[id$='manager_id']").prop('value')){
+        $("[id$='is_default']").prop('checked', false)
+      }
+    }
+
+    checkManager()
+    checkDafult()
+
+    $("[id$='is_default']").change(function(){
+      checkManager()
+    })
+
+    $("[id$='manager_id']").change(function(){
+      checkDafult()
+    })
+  });
+</script>

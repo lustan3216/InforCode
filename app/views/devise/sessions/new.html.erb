@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-xs-4 col-xs-offset-4 login_form">
+    <h1 class="text-center"><span style="color:RGBA(38, 166, 178, 1.00);">I</span>nfor<span style="color:RGBA(38, 166, 178, 1.00);">C</span>harge</h1>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group row">
+          <%= f.label :email, class: 'col-form-label' %>
+          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :password, class: 'col-form-label' %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+            <div class="form-group row ">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+        <% end -%>
+
+        <div class="form-group row ">
+          <%= f.submit "Log in", class: 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+
+<style>
+  .login_form{
+    background-color: rgba(111,100,115,0.6);
+    padding: 0px 45px 25px;
+    border-radius: 5px;
+    margin-top: 100px;
+  }
+  .login_form .btn-primary{
+    background-color: #36c6d3;
+  }
+  h1{
+    color: #fff;
+  }
+</style>

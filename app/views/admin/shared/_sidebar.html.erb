@@ -1,0 +1,176 @@
+<div class="page-sidebar-wrapper">
+  <div class="page-sidebar navbar-collapse collapse">
+    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+      <li class="sidebar-toggler-wrapper hide">
+        <div class="sidebar-toggler">
+          <span></span>
+        </div>
+      </li>
+      <!--<li class="sidebar-search-wrapper">-->
+        <!--<form class="sidebar-search  " action="page_general_search_3.html" method="POST">-->
+          <!--<a href="javascript:;" class="remove">-->
+            <!--<i class="icon-close"></i>-->
+          <!--</a>-->
+          <!--<div class="input-group">-->
+            <!--<input type="text" class="form-control" placeholder="Search...">-->
+            <!--<span class="input-group-btn">-->
+              <!--<a href="javascript:;" class="btn submit">-->
+                <!--<i class="icon-magnifier"></i>-->
+              <!--</a>-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</li>-->
+      <li class="nav-item start <%= sidebar_active('dashboards') %> open">
+        <a href="/admin" class="nav-link nav-toggle">
+          <i class="fa fa-tachometer"></i>
+          <span class="title">Dashboard</span>
+          <span class="selected"></span>
+          <!--<span class="arrow open"></span>-->
+        </a>
+        <!--<ul class="sub-menu">-->
+          <!--<li class="nav-item start open">-->
+            <!--<a href="index.html" class="nav-link ">-->
+              <!--<i class="icon-bar-chart"></i>-->
+              <!--<span class="title">Signage Info</span>-->
+              <!--<span class="selected"></span>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="nav-item start open">-->
+            <!--<a href="index.html" class="nav-link ">-->
+              <!--<i class="icon-bar-chart"></i>-->
+              <!--<span class="title">Advertisement Info</span>-->
+              <!--<span class="selected"></span>-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      </li>
+      <li class="heading">
+        <h3 class="uppercase">Features</h3>
+      </li>
+      <li class="nav-item <%= sidebar_active('ads') %>">
+        <a href="<%= admin_ads_path %>" class="nav-link">
+          <i class="fa fa-adn"></i>
+          <span class="title">Ads</span>
+        </a>
+        <ul class="sub-menu" style="display: block;">
+          <li class="nav-item <%= sidebar_active('campaigns') %>">
+            <a href="<%= admin_campaigns_path %>" class="nav-link">
+              <i class="fa fa-adn"></i>
+              <span class="title">Campaigns</span>
+            </a>
+          </li>
+          <li class="nav-item <%= sidebar_active('ad_groups') %>">
+            <a href="<%= admin_ad_groups_path %>" class="nav-link">
+              <i class="fa fa-adn"></i>
+              <span class="title">Ad Groups</span>
+            </a>
+          </li>
+          <li class="nav-item <%= sidebar_active('materials') %>">
+            <a href="<%= admin_materials_path %>" class="nav-link">
+              <i class="fa fa-file-image-o" aria-hidden="true"></i>
+              <span class="title">Materials</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item <%= sidebar_active('ad_units') %>">
+        <a href="<%= admin_signage_ad_units_path %>" class="nav-link">
+          <i class="fa fa-clone" aria-hidden="true"></i>
+          <span class="title">Ad Units</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('containers') %>">
+        <a href="<%= admin_containers_path %>" class="nav-link">
+          <i class="fa fa-object-group" aria-hidden="true"></i>
+          <span class="title">Containers</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('templates') %>">
+        <a href="<%= admin_templates_path %>" class="nav-link">
+          <i class="fa fa-window-maximize" aria-hidden="true"></i>
+          <span class="title">Templates</span>
+        </a>
+      </li>
+
+      <li class="heading">
+        <h3 class="uppercase">Settings</h3>
+      </li>
+      <li class="nav-item <%= sidebar_active('clients') %>">
+        <a href="<%= admin_clients_path %>" class="nav-link">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          <span class="title">Clients</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('users') %>">
+        <a href="<%= admin_users_path %>" class="nav-link">
+          <i class="fa fa-user-o" aria-hidden="true"></i>
+          <span class="title">Users</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('ad_templates') %>">
+        <a href="<%= admin_ad_templates_path %>" class="nav-link">
+          <i class="fa fa-window-maximize" aria-hidden="true"></i>
+          <span class="title">Ad Templates</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('shops') %>">
+        <a href="<%= admin_shops_path %>" class="nav-link">
+          <i class="fa fa-home"></i>
+          <span class="title">Shops</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('signages') %>">
+        <a href="<%= admin_signages_path %>" class="nav-link">
+          <i class="fa fa-laptop"></i>
+          <span class="title">Signages</span>
+        </a>
+      </li>
+
+      <li class="nav-item <%= sidebar_active('managers') %>">
+        <a href="<%= admin_managers_path %>" class="nav-link">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <span class="title">Managers</span>
+        </a>
+      </li>
+
+      <li class="heading">
+        <h3 class="uppercase">Reports</h3>
+      </li>
+      <li class="nav-item <%= sidebar_active('reports/ads') %>">
+        <a href="<%= admin_reports_ads_path %>" class="nav-link">
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+          <span class="title">Ads</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('reports/signages') %>">
+        <a href="<%= admin_reports_signages_path %>" class="nav-link">
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+          <span class="title">Signages</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('reports/shops') %>">
+        <a href="<%= admin_reports_shops_path %>" class="nav-link">
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+          <span class="title">Shops</span>
+        </a>
+      </li>
+      <li class="nav-item <%= sidebar_active('reports/managers') %>">
+        <a href="<%= admin_reports_managers_path %>" class="nav-link">
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+          <span class="title">Managers</span>
+        </a>
+      </li>
+      <li class="heading">
+        <h3 class="uppercase">Debugs</h3>
+      </li>
+      <li class="nav-item <%= sidebar_active('apk') %>">
+        <a href="<%= admin_apks_path %>" class="nav-link">
+          <i class="fa fa-bug" aria-hidden="true"></i>
+          <span class="title">Signage</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

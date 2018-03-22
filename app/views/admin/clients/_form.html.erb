@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'admin/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:admin , @client] do |f| %>
+            <div class="form-body">
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :title, class: 'form-control' %>
+                <%= f.label :title %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :description, class: 'form-control' %>
+                <%= f.label :description %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.telephone_field :telephone, class: 'form-control' %>
+                <%= f.label :telephone %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :country, class: 'form-control' %>
+                <%= f.label :country %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :city, class: 'form-control' %>
+                <%= f.label :city %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :zipcode, class: 'form-control' %>
+                <%= f.label :zipcode %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :district, class: 'form-control' %>
+                <%= f.label :district %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :address1, class: 'form-control' %>
+                <%= f.label :address1, 'Address' %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :ad_impression_price, class: 'form-control', min: 0, step: '0.1', value: Client::DEFAULT_IMPRESSION_PRICE %>
+                <%= f.label :ad_impression_price, "Ad Impression Price (Default is $#{Client::DEFAULT_IMPRESSION_PRICE} if empty)" %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :ad_click_price, class: 'form-control', min: 0, step: '0.1', value: Client::DEFAULT_CLICK_PRICE %>
+                <%= f.label :ad_click_price, "Ad Click Price (Default is $#{Client::DEFAULT_CLICK_PRICE} if empty)" %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :ad_face_price, class: 'form-control', min: 0, step: '0.1', value: Client::DEFAULT_FACE_PRICE %>
+                <%= f.label :ad_face_price, "Ad Face Price (Default is $#{Client::DEFAULT_FACE_PRICE} if empty)" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

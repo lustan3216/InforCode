@@ -1,0 +1,50 @@
+<%= render 'client/shared/breadcrumb' %>
+<%= render 'client/shared/page_title' %>
+<div class="row" id="app">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <div class="portlet-body">
+        <div class="table-container">
+          <div class="dataTables_wrapper dataTables_extended_wrapper">
+
+            <div class="box-header">
+              <div class="box-tools">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <button class="btn btn-sm" id="type_change" @click="change_type">
+                      <span class="hidden" name="price"><i class="fa fa-usd" aria-hidden="true"></i></i> Price</span>
+                      <span name="counts"><i class="fa fa-calculator" aria-hidden="true"></i> Counts</span>
+                    </button>
+                  </div>
+                  <div class="col-xs-4">
+                    <%= select_tag :source_id,
+                                   options_from_collection_for_select(@managers, :manager_id, :manager_id_with_name),
+                                   'v-model': 'source_id',
+                                   name: @managers.name.downcase.pluralize,
+                                   class: 'form-control' %>
+                  </div>
+                  <div class="col-xs-5">
+                    <button id="time-daterange" class="btn" style="background: #fff; cursor: pointer; width: 100%">
+                      <i class="fa fa-calendar"></i>&nbsp;
+                      <span></span> <b class="caret"></b>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-content" style="padding-top: 25px">
+              <div class="chart tab-pane active" id="charge-time-chart" style="position: relative"></div>
+            </div>
+
+            <div class="text-right">
+              <p>Last time calculated at : <span id="last_time_calculated_at"></span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

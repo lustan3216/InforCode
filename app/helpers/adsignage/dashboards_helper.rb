@@ -1,0 +1,2 @@
+module Adsignage::DashboardsHelper
+end

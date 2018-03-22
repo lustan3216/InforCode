@@ -1,0 +1,250 @@
+<%= render 'admin/shared/breadcrumb' %>
+<%= render 'admin/shared/page_title' %>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="portlet light bordered">
+      <div class="portlet-title tabbable-line">
+        <div class="caption">
+          <span class="caption-subject font-dark bold uppercase">Top Three Clicks of ads</span>
+          <span class="yesterday">(yesterday)</span>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="mt-actions">
+              <% @click_ads.each do |ad| %>
+                  <div class="mt-action">
+                    <div class="mt-action-body">
+                      <div class="mt-action-row">
+                        <div class="mt-action-info ">
+                          <div class="mt-action-details ">
+                            <p class="mt-action-desc" style="color:#00c0ef;">
+                              <span style="font-weight: bold; font-size: 38px;">
+                              <%= ad.clicks %></span> Clicks
+                            </p>
+                            <span class="mt-action-author" style="color: #00c0ef; font-weight: lighter;">
+                              <%= "[#{ad.ad_id}] #{ad.name}" %>
+                            </span>
+                          </div>
+                          <div class="mt-action-datetime ">
+                            <i class="fa fa-hand-pointer-o fa-3x"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="portlet light bordered">
+      <div class="portlet-title tabbable-line">
+        <div class="caption">
+          <span class="caption-subject font-dark bold uppercase">Top three faces of ads</span>
+          <span class="yesterday">(yesterday)</span>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="mt-actions">
+              <div class="mt-actions">
+                <% @face_ads.each do |ad| %>
+                    <div class="mt-action">
+                      <div class="mt-action-body">
+                        <div class="mt-action-row">
+                          <div class="mt-action-info ">
+                            <div class="mt-action-details ">
+                              <p class="mt-action-desc" style="color:#00c0ef;">
+                              <span style="font-weight: bold; font-size: 38px;">
+                              <%= ad.faces %></span> Faces
+                              </p>
+                              <span class="mt-action-author" style="color: #00c0ef; font-weight: lighter;">
+                              <%= "[#{ad.ad_id}] #{ad.name}" %>
+                            </span>
+                            </div>
+                            <div class="mt-action-datetime ">
+                              <i class="fa fa-user-circle-o fa-3x"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="portlet light bordered">
+      <div class="portlet-title tabbable-line">
+        <div class="caption">
+          <span class="caption-subject font-dark bold uppercase">Top three cost of ads</span>
+          <span class="yesterday">(yesterday)</span>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="mt-actions">
+              <% @cost_ads.each_with_index do |ad, index| %>
+                  <div class="mt-action">
+                    <div class="mt-action-body">
+                      <div class="mt-action-row">
+                        <div class="mt-action-info ">
+                          <div class="mt-action-details ">
+                            <p class="mt-action-desc" style="color:#00c0ef;">
+                              <span style="font-weight: bold; font-size: 38px;">
+                              <%= ad.cost %></span> Cost
+                            </p>
+                            <span class="mt-action-author" style="color: #00c0ef; font-weight: lighter;">
+                              <%= "[#{ad.ad_id}] #{ad.name}" %>
+                            </span>
+                          </div>
+                          <div class="mt-action-datetime ">
+                            <i class="fa fa-money fa-3x" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="no_money_managers">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <div class="portlet-title tabbable-line">
+        <div class="caption">
+          <span class="caption-subject font-dark bold uppercase">Top six running out of managers</span>
+        </div>
+        <input type="number" v-model.number="filter_money" placeholder="Filter remaining sum below this number" class="form-control form-filter input-sm">
+      </div>
+      <div class="portlet-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="mt-actions">
+              <% @no_money_managers.each do |manager| %>
+                  <div class="mt-action mt-action-inline">
+                    <div class="mt-action-body">
+                      <div class="mt-action-row">
+                        <div class="mt-action-info ">
+                          <div class="mt-action-details ">
+                            <p class="mt-action-desc" style="color:#00c0ef;">
+                              <span style="font-weight: bold; font-size: 38px; <%= 'color: rgba(255, 0, 0, 0.67)' if manager.remaining_sum <= 0 %>;">
+                              <%= manager.remaining_sum %></span>
+                              <span style="white-space: nowrap;">Remaining Sum</span>
+                            </p>
+                            <span class="mt-action-author" style="color: #00c0ef; font-weight: lighter;">
+                              <%= "[#{manager.id}] #{manager.name}" %>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="date_end_ads">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <div class="portlet-title tabbable-line">
+        <div class="caption">
+          <span class="caption-subject font-dark bold uppercase">Expiring Ads</span>
+        </div>
+        <button id="time-daterange" class="btn" style="background: #fff; cursor: pointer;float: right;">
+          <i class="fa fa-calendar"></i>&nbsp;
+          <span></span> <b class="caret"></b>
+        </button>
+      </div>
+      <div class="portlet-body">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="mt-actions">
+              <% @date_end_ads.each do |ad| %>
+                  <div class="mt-action mt-action-inline">
+                    <div class="mt-action-body">
+                      <div class="mt-action-row">
+                        <div class="mt-action-info ">
+                          <div class="mt-action-details ">
+                            <p class="mt-action-desc" style="color:#00c0ef;">
+                              <span style="font-weight: bold; font-size: 28px;">
+                              <%= ad.end_at.strftime('%y-%m-%d %R') %></span>
+                              <span style="white-space: nowrap;">End At</span>
+                            </p>
+                            <span class="mt-action-author" style="color: #00c0ef; font-weight: lighter;">
+                              <%= "[#{ad.id}] #{ad.name}" %>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .yesterday{
+    font-size: 14px;
+    color: #A6A8A8;
+    font-weight: normal;
+    text-transform: capitalize;
+    display: block;
+  }
+  input.form-filter{
+    display: inline-block;
+    width: 300px !important;
+    right: 40px;
+    position: absolute;
+    top: 20px;
+  }
+  .mt-action{
+    padding-top: 0 !important;
+  }
+  .mt-action.mt-action-inline{
+    width: 33%;
+    display: inline-block;
+  }
+  .mt-action-details{
+    width: 67%;
+  }
+  .mt-action-datetime{
+    width: 80px !important;
+    padding-top: 45px !important;
+  }
+  .mt-action-author{
+    height: 40px !important;
+    display: inline-block !important;
+  }
+  @media (min-width: 564px){
+    .daterangepicker {
+      width: 680px;
+    }
+  }
+</style>

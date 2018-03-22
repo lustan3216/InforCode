@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>廣告托播系統</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'adsignage/adsignage', media: 'all' %>
+  <%= javascript_include_tag 'adsignage/adsignage'  %>
+  <%= stylesheet_pack_tag 'admin/admin', media: 'all' %>
+  <%= javascript_pack_tag 'admin/admin' %>
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+<div class="page-wrapper">
+  <%= render 'adsignage/shared/navbar' %>
+
+  <div class="clearfix"> </div>
+  <div class="page-container">
+
+    <%= render 'adsignage/shared/sidebar' %>
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <%= yield %>
+        <%= javascript_pack_tag "#{ request.params['controller'] }/#{ action_name }" rescue '' %>
+        <%= stylesheet_pack_tag "#{ request.params['controller'] }/#{ action_name }" rescue '' %>
+      </div>
+    </div>
+
+    <%#= render 'admin/shared/quick_sidebar' %>
+  </div>
+  <%#= render 'admin/shared/footer' %>
+</div>
+</body>
+</html>

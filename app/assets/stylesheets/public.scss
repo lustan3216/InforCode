@@ -1,0 +1,57 @@
+[role='menu'].dropdown-menu{
+  right: 0;
+  left:inherit;
+}
+thead th{
+  white-space: nowrap;
+}
+#app table{
+  min-height: 400px;
+}
+.portlet-body.form{
+  button[type="submit"]{
+    width: 100%;
+  }
+}
+//td[name^=manager],
+//td[name^=campaign],
+td[name^=status],
+td[name^=ad_template]{
+  white-space: nowrap;
+}
+.form-group.form-md-line-input .field_with_errors:last-child{
+  position: absolute;
+  top: 0;
+  color: red;
+  label{
+    font-weight: bold !important;
+  }
+}
+.form-group.form-md-line-input .form-control ~ label.require:before{
+  content: '* ';
+}
+.page-sidebar .page-sidebar-menu .sub-menu > li.active > a{
+  background: #36c6d3 !important;
+  border-top-color: transparent !important;
+  color: #fff !important;
+  i{
+    color: #fff !important;
+  }
+}
+
+table.dataTable thead .sorting {
+  background: image-url('sort_both.png') no-repeat center right;
+}
+table.dataTable thead .sorting_desc {
+  background: image-url('sort_desc.png') no-repeat center right;
+}
+table.dataTable thead .sorting_asc {
+  background: image-url('sort_asc.png') no-repeat center right;
+}
+.table-responsive{
+  margin-top: 20px;
+}
+.dataTable .dropdown-menu > li > a{
+  padding: 6px 20px;
+  color: teal;
+}

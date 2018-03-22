@@ -1,0 +1,4 @@
+var template_ads = $('#template_ads')
+template_ads.html('')
+template_ads.append('<%=j render 'client/signage_ad_units/template_ads' %>')
+template_ads.data('tmp_id', <%= @ad_template_id %>)

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'admin/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:admin , @ad_group] do |f| %>
+            <div class="form-body">
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :client_id, Client.all.order('id asc'), :id , :title, {}, class: 'form-control' %>
+                <%= f.label :client_id %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :name, class: 'form-control' %>
+                <%= f.label :name %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :manager_id, Manager.all.order('id asc'),
+                                        :id , :name, {}, class: 'form-control', 'v-model': 'manager_id' %>
+                <%= f.label :manager_id %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :ad_ids, Ad.all.order('id asc'), :id , :name, {}, multiple: true, class: 'form-control' %>
+                <%= f.label :ad_ids, 'Ads' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

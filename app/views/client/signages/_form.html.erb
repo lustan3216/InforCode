@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'client/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:client , @signage] do |f| %>
+            <div class="form-body">
+              <div class="form-group form-md-line-input signage_title">
+                <%= f.text_field :title, class: 'form-control' %>
+                <%= f.label :title, 'Title (If change then Daily Signage Reports will separate to a new report.)' %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :sn, class: 'form-control' %>
+                <%= f.label :sn %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :shop_id, current_user.client.shops, :id, :id_with_title, {include_blank: 'Select a option'}, class: 'form-control' %>
+                <%= f.label :shop_id, 'Shop' %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :container_id, current_user.client.containers, :id, :id_with_title, {include_blank: 'Select a option'}, class: 'form-control' %>
+                <%= f.label :container_id, 'Container' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

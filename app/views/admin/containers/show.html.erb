@@ -1,0 +1,15 @@
+<%= render 'admin/shared/breadcrumb' %>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<div class="row" id="app" style="height: 763px;">
+  <div id="gjs"
+       data-id="<%= @container.id %>"
+       data-ad_unit_option="<%= SignageAdUnit.select(:id, :title).to_json %>"
+       data-templates="<%= ::Template.select(:content, :title).uniq.to_json %>">>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('.menu-toggler').click()
+  })
+</script>

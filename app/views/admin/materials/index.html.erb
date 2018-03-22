@@ -1,0 +1,37 @@
+<%= render 'admin/shared/breadcrumb' %>
+<%= render 'admin/shared/page_title' %>
+<div class="row" id="app">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <div class="portlet-body">
+        <div class="table-container">
+          <div class="dataTables_wrapper dataTables_extended_wrapper">
+            <div class="row">
+              <div class="col-sm-8">
+              </div>
+
+              <div class="col-sm-4">
+                <input type="text" class="form-control form-filter input-sm" v-model="find_text" placeholder="Searching Bar">
+              </div>
+            </div>
+
+            <table-vue :columns="columns"
+                       :source_name="source_name"
+                       :sources="sources"
+                       :action_list="action_list"
+                       :sorting_list="sorting_list"
+                       :filter_list="filter_list">
+            </table-vue>
+
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <pagination-vue v-bind:pagination="pagination"></pagination-vue>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

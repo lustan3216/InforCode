@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'client/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:client , @campaign] do |f| %>
+            <div class="form-body">
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :name, class: 'form-control' %>
+                <%= f.label :name %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :manager_id, current_user.client.managers.order('id asc'),
+                                        :id , :name, {}, class: 'form-control', 'v-model': 'manager_id' %>
+                <%= f.label :manager_id %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.collection_select :ad_group_ids, current_user.client.ad_groups.order('id asc'), :id , :name,
+                                        {}, multiple: true, class: 'form-control' %>
+                <%= f.label :ad_group_ids %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :daily_budget, class: 'form-control' %>
+                <%= f.label :daily_budget, 'Daily Budget (Default is zero, and it meanings no budget limit)' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

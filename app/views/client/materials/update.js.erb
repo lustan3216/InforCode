@@ -1,0 +1,14 @@
+<% if @errors.present? %>
+  <% @errors.each do |error| %>
+    $.bootstrapGrowl('<%= error %>', {type: 'danger', align: 'right', offset: {from: 'bottom', amount: 30}});
+  <% end %>
+<% else %>
+  $('#material_model').modal('hide')
+  $("[id$='is_default']").prop('checked', false)
+  var option = $('#ad_material_ids option[value="' + <%= @material.id %> + '"]')
+  option.prop('selected', true);
+  option.html('[<%= @material.id %>] [<%= @material.ad_template.title %>] <%= @material.name %>')
+
+  $('#ad_manager_id option[value="' + <%= @material.manager.id %> + '"]').prop('selected', true);
+  $.bootstrapGrowl('Material edit successfully', {type: 'info', align: 'right', offset: {from: 'bottom', amount: 30}});
+<% end %>

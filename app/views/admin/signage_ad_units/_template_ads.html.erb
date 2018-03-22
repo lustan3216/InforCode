@@ -1,0 +1,15 @@
+<% @ads.each do |ad| %>
+    <div class="ad_block" style="margin-bottom: 20px;">
+      <%= check_box_tag "#{ad.id}_ad", true, (true if @selected_ad_ids && @selected_ad_ids.include?(ad.id))  %>
+      <span><%= label_tag "#{ad.id}_ad", "[#{ad.id}] [#{ad.status}] #{ad.name}" %></span>
+      <div class="row" id="image_<%= ad.id %>_ad">
+        <div class="col-xs-5">
+          <%= ad_image('trigger', ad) %>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1">
+          <%= ad_image('display', ad) %>
+        </div>
+      </div>
+    </div>
+    <hr>
+<% end %>

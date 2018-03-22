@@ -1,0 +1,28 @@
+<% ad = f.object.ad %>
+<div class="nested-fields">
+  <div class="col-xs-12">
+    <div class="form-group hide">
+      <%= f.text_field :ad_id, class: 'form-control' %>
+      <%= f.label :ad_id %>
+    </div>
+    <div class="form-group hide">
+      <%= f.number_field :position, class: 'form-control' %>
+      <%= f.label :position %>
+    </div>
+    <span>
+      <% if f.object.persisted? && ad %>
+          [<%= ad.id %>] <%= ad.name %>
+      <% end %>
+      <%= link_to_remove_association "×", f, style:'font-size: 25px', class: 'pull-right' %>
+    </span>
+    <div class="row image">
+      <div class="col-xs-5 <%= 'hidden' unless ad %>">
+        <%= ad_image('trigger', ad) if ad %>
+      </div>
+      <div class="col-xs-5 col-xs-offset-1 <%= 'hidden' unless ad %>">
+        <%= ad_image('display', ad) if ad %>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="page-header navbar navbar-fixed-top">
+  <div class="page-header-inner ">
+    <div class="page-logo">
+      <a href="/">
+        <h4 class="text-center" style="color: white;font-weight: inherit;font-size: 25px;">
+          <span style="color:RGBA(38, 166, 178, 1.00);font-weight: 600;">I</span>nfor<span style="color:RGBA(38, 166, 178, 1.00);">C</span>harge
+        </h4>
+      </a>
+      <div class="menu-toggler sidebar-toggler">
+        <span></span>
+      </div>
+    </div>
+    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+      <span></span>
+    </a>
+    <div class="top-menu">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown dropdown-user">
+          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+            <span class="username username-hide-on-mobile"> <%= current_user.email %> </span>
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-default">
+            <!--<li>-->
+            <!--<a href="page_user_profile_1.html">-->
+            <!--<i class="icon-user"></i> My Profile-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a href="app_calendar.html">-->
+            <!--<i class="icon-calendar"></i> My Calendar-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a href="app_inbox.html">-->
+            <!--<i class="icon-envelope-open"></i> My Inbox-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a href="app_todo.html">-->
+            <!--<i class="icon-rocket"></i> My Tasks-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="divider"> </li>-->
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

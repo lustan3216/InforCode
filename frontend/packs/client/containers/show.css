@@ -1,0 +1,19 @@
+#gjs-sm-general,
+#gjs-sm-dimension,
+#gjs-sm-typography,
+#gjs-sm-extra,
+.gjs-clm-tags,
+.gjs-pn-btn.fa-bars,
+.gjs-block.gjs-f-image,
+.fa-video-camera.gjs-block,
+#gjs-sm-border-radius,
+#gjs-sm-border,
+#gjs-sm-box-shadow,
+.gjs-block.gjs-f-b1:not(.template),
+.gjs-block.gjs-f-b2:not(.template),
+.gjs-block.gjs-f-b3:not(.template),
+.gjs-block.gjs-f-b37:not(.template),
+.gjs-block.gjs-f-text,
+.gjs-block.fa-youtube-play{
+  display: none !important;
+}

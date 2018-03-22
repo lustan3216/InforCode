@@ -1,0 +1,88 @@
+<div class="form-group" id="edit_script" style="border: 1px solid #C2CAD8;border-radius: 5px;padding: 10px 15px;">
+  <p style="font-size: 15px;color: #888888">Ads</p>
+  <a type="button" class="btn btn-default" data-toggle="modal" data-target="#script_model">Edit script</a>
+
+  <div class="modal fade" id="script_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="display: inline-block;">Select Ads</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="overflow-y: scroll; height: 70vh;" id="template_ads"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save_selects">Save selects</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" style="margin-top: 15px; max-height: 70vh; overflow-y: scroll;">
+    <div class="row">
+      <%= f.fields_for :signage_ad_unit_contents do |ff| %>
+          <%= render 'signage_ad_unit_content_fields', f: ff %>
+      <% end %>
+
+      <div class="links">
+        <%= link_to_add_association 'add ad', f, :signage_ad_unit_contents, class: 'hide' %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  function check_edit_script(){
+    if ($('#signage_ad_unit_mode').val() === 'specific'){
+      $('#edit_script').show()
+    }else{
+      $('#edit_script').hide()
+    }
+  }
+  check_edit_script();
+  $('#signage_ad_unit_mode').on('change', function(){
+    check_edit_script()
+  })
+
+  $('form').on('cocoon:before-remove', function(e, item) {
+    var id = +item.find('input').val();
+    $('.modal-body').find('#'+id+'_ad').prop('checked', false)
+  });
+
+  $('#save_selects').click(function(){
+    $('.nested-fields').hide();
+    $('input[id$="_destroy"]').each(function(i, item){
+      item.value = 'true'
+    });
+
+    $('.modal-body').find('input:checked').each(function(i, item){
+      $('.add_fields').click();
+      var last = $('.nested-fields').last()
+      last.find('input[id$="ad_id"]').val(parseInt(item.id))
+      last.find('span').append($('label[for="'+item.id+'"]').html())
+      last.find('.image').append($('#image_'+item.id).html())
+    });
+    $('.modal').modal('hide')
+  });
+
+  $('#script_model').on('show.bs.modal', function () {
+    if ($('#template_ads').data('tmp_id') !== $('#signage_ad_unit_ad_template_id').val()){
+      $.ajax({
+        url: '/admin/signage_ad_units/' + <%= @signage_ad_unit.id || 0 %> +'/template_ads',
+        data: {ad_template_id: $('#signage_ad_unit_ad_template_id').val()}
+      })
+    }
+  })
+  $('#signage_ad_unit_template_id').change(function(){
+    $('.nested-fields').hide();
+    $('input[id$="_destroy"]').each(function(i, item){
+      item.value = 'true'
+    });
+  })
+</script>
+

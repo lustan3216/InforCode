@@ -1,0 +1,57 @@
+<%= render 'admin/shared/breadcrumb' %>
+<%= render 'admin/shared/page_title' %>
+<div class="row" id="app">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <div class="portlet-body">
+        <div class="table-container">
+          <div class="dataTables_wrapper dataTables_extended_wrapper">
+            <%= form_tag do %>
+                <div class="form-group form-md-line-input">
+                  <%= select_tag :signage_id,
+                                 options_from_collection_for_select(Signage.all, :id, :id_with_title),
+                                 'v-model': 'signage_id',
+                                 class: 'form-control',
+                                 multiple: true %>
+                  <%= label_tag :signage_id %>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                  <%= text_area_tag :json_data, nil, 'v-model': 'json_data',
+                                    class: 'form-control',
+                                    required: '',
+                                    placeholder: '{ "command_type": "reset",
+                     "apk_content": {
+                       "launch_activity": ""
+                     }
+                  }' %>
+                  <%= label_tag :json_data %>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                  <%= submit_tag :publish, class: 'btn btn-block' %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(()=>{
+    $('#signage_id').select2()
+  })
+</script>
+
+<style>
+  textarea{
+    height: 250px !important;
+    border: 1px solid #c2cad8 !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
+    padding: 15px !important;
+  }
+</style>

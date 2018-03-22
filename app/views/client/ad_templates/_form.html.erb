@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="portlet light bordered">
+      <%= render 'client/shared/form_title' %>
+      <div class="portlet-body form">
+
+        <%= form_for [:client, @ad_template] do |f| %>
+            <div class="form-body">
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :title, class: 'form-control' %>
+                <%= f.label :title, 'Title (Default: Width * Height)' %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.text_field :description, class: 'form-control' %>
+                <%= f.label :description %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :width, class: 'form-control' %>
+                <%= f.label :width %>
+              </div>
+
+              <div class="form-group form-md-line-input">
+                <%= f.number_field :height, class: 'form-control' %>
+                <%= f.label :height %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module Admin::SignagesHelper
+end
